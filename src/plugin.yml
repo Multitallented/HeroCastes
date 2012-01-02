@@ -1,0 +1,10 @@
+author: Herocraft
+database: false
+description: your players can now hire armies of builders, suppliers, soldiers, and
+  supervisors to build empires for them
+generator: http://dinnerbone.com/minecraft/tools/pluginator/
+main: com.herocraftonline.dev.herocastes.Herocastes
+name: HeroCastes
+startup: postworld
+url: http://dev.bukkit.org/server-mods/herocastes/
+version: '0.1'
