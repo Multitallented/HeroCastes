@@ -1,9 +1,9 @@
-author: Herocraft
+author: Multitallented
 database: false
 description: your players can now hire armies of builders, suppliers, soldiers, and
   supervisors to build empires for them
 generator: http://dinnerbone.com/minecraft/tools/pluginator/
-main: com.herocraftonline.dev.herocastes.Herocastes
+main: multitallented.redcastlemedia.bukkit.herocastes.Herocastes
 name: HeroCastes
 startup: postworld
 url: http://dev.bukkit.org/server-mods/herocastes/
