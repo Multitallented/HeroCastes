@@ -25,7 +25,7 @@ public class Herocastes extends JavaPlugin {
         
         cm = new CasteManager();
         
-        //register events
+        //register events here
         
         setupEconomy();
         setupPermissions();
@@ -40,7 +40,9 @@ public class Herocastes extends JavaPlugin {
             return true;
         }
         Player player = (Player) cs;
-        if (args.length > 1 && args[0].equalsIgnoreCase("setcaste")) {
+        //No longer using /hcaste setcaste.
+        //Still need to check permission when accepting job postings though.
+        /*if (args.length > 1 && args[0].equalsIgnoreCase("setcaste")) {
             //Check if the player has permission for that caste
             if (!perms.has(player, "herocaste.all") && !perms.has(player, "herocaste." + args[1])) {
                 player.sendMessage(ChatColor.GRAY + "[HeroCastes] You don't have permission for caste " + args[1]);
@@ -69,7 +71,7 @@ public class Herocastes extends JavaPlugin {
             
             cm.setCaste(player.getName(), args[1]);
             player.sendMessage(ChatColor.GOLD + "[HeroCastes] You are now in the " + args[1] + " caste.");
-        }
+        }*/
         return true;
     }
     

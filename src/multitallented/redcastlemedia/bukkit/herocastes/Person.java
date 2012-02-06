@@ -7,11 +7,11 @@ import java.util.Set;
  * @author Multitallented
  */
 public class Person {
-    private String type;
+    //private String type;
     private Set<Job> jobs;
     
-    public Person(String type, Set<Job> jobs) {
-        this.type = type;
+    public Person(Set<Job> jobs) {
+        //this.type = type;
         this.jobs = jobs;
     }
     
@@ -19,11 +19,12 @@ public class Person {
         return jobs;
     }
     
-    public String getType() {
+    //No longer requiring players to be a certain caste
+    /*public String getType() {
         return type;
     }
     
     public void setType(String type) {
         this.type = type;
-    }
+    }*/
 }

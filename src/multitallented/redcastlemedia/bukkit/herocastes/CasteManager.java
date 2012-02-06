@@ -15,9 +15,9 @@ public class CasteManager {
         return persons.get(name);
     }
     
-    public void setCaste(String name, String type) {
+    //No longer doing /hcaste setcaste
+    /*public void setCaste(String name, String type) {
         persons.get(name).setType(type);
-        //TODO write code to save to file
-    }
+    }*/
     
 }
