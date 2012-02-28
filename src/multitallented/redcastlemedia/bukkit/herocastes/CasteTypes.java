@@ -11,5 +11,6 @@ package multitallented.redcastlemedia.bukkit.herocastes;
 public enum CasteTypes {
     MERCHANT,
     SOLDIER,
-    BUILDER
+    BUILDER,
+    CUSTOM
 }

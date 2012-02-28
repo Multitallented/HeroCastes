@@ -9,9 +9,10 @@ import java.util.Set;
 public class Person {
     //private String type;
     private Set<Job> jobs;
+    private final String name;
     
-    public Person(Set<Job> jobs) {
-        //this.type = type;
+    public Person(String name, Set<Job> jobs) {
+        this.name = name;
         this.jobs = jobs;
     }
     
@@ -19,6 +20,9 @@ public class Person {
         return jobs;
     }
     
+    public String getName() {
+        return name;
+    }
     //No longer requiring players to be a certain caste
     /*public String getType() {
         return type;

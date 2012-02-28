@@ -1,5 +1,7 @@
 package multitallented.redcastlemedia.bukkit.herocastes;
 
+import java.util.HashSet;
+
 /**
  *
  * @author Multitallented
@@ -12,6 +14,8 @@ public class Job {
     private final String target;
     private final String type;
     private final String employee;
+    private HashSet<String> whitelist;
+    private HashSet<String> blacklist;
     
     public Job(String employer, String employee, double salary, double raise, int repeatsRemaining, String target, String type) {
         this.employer = employer;
@@ -21,6 +25,21 @@ public class Job {
         this.repeatsRemaining = repeatsRemaining;
         this.target = target;
         this.type = type;
+    }
+    public void getBlackList(HashSet<String> input) {
+        this.blacklist= input;
+    }
+    
+    public HashSet<String> getBlackList() {
+        return blacklist;
+    }
+    
+    public void setWhiteList(HashSet<String> input) {
+        this.whitelist=input;
+    }
+    
+    public HashSet<String> getWhiteList() {
+        return whitelist;
     }
     
     public String getEmployer() {

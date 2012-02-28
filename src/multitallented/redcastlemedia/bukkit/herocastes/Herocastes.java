@@ -3,6 +3,7 @@ package multitallented.redcastlemedia.bukkit.herocastes;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -40,6 +41,71 @@ public class Herocastes extends JavaPlugin {
             return true;
         }
         Player player = (Player) cs;
+        if (econ==null) {
+            player.sendMessage(ChatColor.RED + "[HeroCastes] An economy plugin is require but not found.");
+            return true;
+        }
+        
+        if (args.length > 2 && args[0].equalsIgnoreCase("create")) {
+            //hcaste create target wage [bonus] [limit]
+            
+            //Check player has enough money
+            double wage = 0;
+            try {
+                wage = Integer.parseInt(args[2]);
+                if (econ.getBalance(player.getName()) < wage) {
+                    player.sendMessage(ChatColor.RED + "[HeroCastes] You don't have enough money to pay that.");
+                    return true;
+                }
+            } catch (Exception e) {
+
+            }
+            
+            Player p = this.getServer().getPlayer(args[1]);
+            Person pe = cm.getPerson(args[1]);
+            Material m = Material.getMaterial(args[1]);
+            String target = null;
+            CasteTypes type = null;
+            //Check if target is a valid item, player, or HS region
+            if (p != null) {
+                target = p.getName();
+                type = CasteTypes.SOLDIER;
+            } else if (pe != null) {
+                target = pe.getName();
+                type = CasteTypes.SOLDIER;
+            } else if (m != null) {
+                target = m.name();
+                type = CasteTypes.MERCHANT;
+            } else if (args[1].equalsIgnoreCase("hourly") || args[1].equalsIgnoreCase("daily") || args[1].equalsIgnoreCase("weekly")) {
+                target = args[1];
+                type = CasteTypes.CUSTOM;
+            } else {
+                player.sendMessage(ChatColor.RED + "[HeroCastes] Target must be a valid player, item, or HeroStronghold region.");
+                return true;
+            }
+            
+            //Check if player has permission to create this type
+            if (type == CasteTypes.MERCHANT && perms != null && !perms.has(player, "herocastes.merchant.employ")) {
+                player.sendMessage(ChatColor.RED + "[HeroCastes] You dont have permission to employ a merchant");
+                return true;
+            } else if (type == CasteTypes.BUILDER && perms != null && !perms.has(player, "herocastes.builder.employ")) {
+                player.sendMessage(ChatColor.RED + "[HeroCastes] You dont have permission to employ a builder");
+                return true;
+            } else if (type == CasteTypes.SOLDIER && perms != null && !perms.has(player, "herocastes.soldier.employ")) {
+                player.sendMessage(ChatColor.RED + "[HeroCastes] You dont have permission to employ a soldier");
+                return true;
+            } else if (type == CasteTypes.CUSTOM && perms != null && !perms.has(player, "herocastes.custom.employ")) {
+                player.sendMessage(ChatColor.RED + "[HeroCastes] You dont have permission to employ a player");
+                return true;
+            }
+            
+            
+            
+        } else if (args.length > 2 && args[0].equalsIgnoreCase("search")) {
+            //hcaste search [type] [minwage]
+            
+        }
+        
         //No longer using /hcaste setcaste.
         //Still need to check permission when accepting job postings though.
         /*if (args.length > 1 && args[0].equalsIgnoreCase("setcaste")) {
