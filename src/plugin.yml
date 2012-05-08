@@ -8,3 +8,10 @@ name: HeroCastes
 startup: postworld
 url: http://dev.bukkit.org/server-mods/herocastes/
 version: '0.1'
+depend: [Vault]
+softdepend: [HeroStronghold, Heroes]
+commands:
+   herocaste:
+      aliases: ['hc', 'herocastes']
+      description: HeroCaste commands
+      usage: /<command>
